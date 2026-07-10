@@ -211,6 +211,13 @@
   table.res .best { font-weight: 700; }
   .tbl-note { font-size: 13px; color: var(--ink-soft); text-align: center; margin-top: 10px; }
 
+  /* RoboCasa video showcase */
+  .vid-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; max-width: 900px; margin: 0 auto; }
+  .vid-task .vid-task-title { font-size: 15px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
+  .vid-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .vid-pair video { width: 100%; display: block; border-radius: 10px; border: 1px solid var(--line); background: #000; aspect-ratio: 4/3; object-fit: cover; }
+  @media (max-width: 720px) { .vid-showcase { grid-template-columns: 1fr; gap: 24px; } }
+
   /* ---------- REAL WORLD TASK GRID ---------- */
   .task-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
@@ -414,6 +421,111 @@
   </div>
 </section>
 
+<!-- ============ ROBOCASA VIDEOS ============ -->
+<section id="robocasa-videos">
+  <div class="wrap">
+    <span class="section-eyebrow">Rollouts</span>
+    <h2 class="section-title">RoboCasa GR-1 Tabletop</h2>
+    <div class="vid-showcase">
+
+      <div class="vid-task">
+        <p class="vid-task-title">Bottle to cabinet close</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo1.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo2.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Can to drawer close</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo3.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo4.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Cuttingboard to basket</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo5.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo6.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Cuttingboard to pan</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo7.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo8.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Placemat to basket</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo9.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo10.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Placemat to bowl</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo11.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo12.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Tray to cardboard box</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo13.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo14.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+      <div class="vid-task">
+        <p class="vid-task-title">Tray to plate</p>
+        <div class="vid-pair">
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo15.mp4" type="video/mp4"></video>
+          <video autoplay muted loop playsinline><source src="static/videos/robocasa/robo16.mp4" type="video/mp4"></video>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS: ROBOCASA ============ -->
+<section id="robocasa">
+  <div class="wrap">
+    <span class="section-eyebrow">Results</span>
+    <h2 class="section-title">RoboCasa GR1 Tabletop</h2>
+    <div class="table-scroll">
+      <table class="res">
+        <caption><b>Table.</b> RoboCasa GR1 Tabletop (verb-grouped averages, success rate %), 50 rollouts per task on 24 PnP tasks.</caption>
+        <thead>
+          <tr>
+            <th>Task (Avg)</th>
+            <th>Isaac-GR00T</th><th>QwenGR00T</th><th>QwenPI</th><th>QwenOFT</th><th>QwenFAST</th><th>VisionOnly</th>
+            <th>DialogVLA<br>(Ours)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>PnP * to * Close (Avg)</td><td>24.2</td><td>50.3</td><td>42.3</td><td>43.7</td><td>35.0</td><td class="best">54.0</td><td>44.6</td></tr>
+          <tr><td>PnP Novel From Cuttingboard To * (Avg)</td><td>56.9</td><td>52.8</td><td>46.0</td><td>50.4</td><td>50.4</td><td>45.2</td><td class="best">57.6</td></tr>
+          <tr><td>PnP Novel From Placemat To * (Avg)</td><td>51.9</td><td>38.0</td><td>43.5</td><td>41.5</td><td>33.5</td><td>32.5</td><td class="best">53.5</td></tr>
+          <tr><td>PnP Novel From Tray To * (Avg)</td><td>55.1</td><td>39.2</td><td>44.0</td><td>49.2</td><td>32.0</td><td>44.8</td><td class="best">64.0</td></tr>
+          <tr><td>PnP Novel From Plate To * (Avg)</td><td>57.6</td><td>58.5</td><td>44.0</td><td class="best">61.0</td><td>45.0</td><td>42.0</td><td>56.8</td></tr>
+          <tr class="ours">
+            <td><b>Overall Average</b></td><td>47.6</td><td>47.8</td><td>43.9</td><td>48.8</td><td>39.0</td><td>44.7</td><td>55.3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- ============ RESULTS: ROBOTWIN ============ -->
 <section id="robotwin">
   <div class="wrap">
@@ -457,35 +569,6 @@
   </div>
 </section>
 
-<!-- ============ RESULTS: ROBOCASA ============ -->
-<section id="robocasa">
-  <div class="wrap">
-    <span class="section-eyebrow">Results</span>
-    <h2 class="section-title">RoboCasa GR1 Tabletop</h2>
-    <div class="table-scroll">
-      <table class="res">
-        <caption><b>Table.</b> RoboCasa GR1 Tabletop (verb-grouped averages, success rate %), 50 rollouts per task on 24 PnP tasks.</caption>
-        <thead>
-          <tr>
-            <th>Task (Avg)</th>
-            <th>Isaac-GR00T</th><th>QwenGR00T</th><th>QwenPI</th><th>QwenOFT</th><th>QwenFAST</th><th>VisionOnly</th>
-            <th>DialogVLA<br>(Ours)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>PnP * to * Close</td><td>24.2</td><td>50.3</td><td>42.3</td><td>43.7</td><td>35.0</td><td class="best">54.0</td><td>44.6</td></tr>
-          <tr><td>PnP Novel — Cuttingboard</td><td>56.9</td><td>52.8</td><td>46.0</td><td>50.4</td><td>50.4</td><td>45.2</td><td class="best">57.6</td></tr>
-          <tr><td>PnP Novel — Placemat</td><td>51.9</td><td>38.0</td><td>43.5</td><td>41.5</td><td>33.5</td><td>32.5</td><td class="best">53.5</td></tr>
-          <tr><td>PnP Novel — Tray</td><td>55.1</td><td>39.2</td><td>44.0</td><td>49.2</td><td>32.0</td><td>44.8</td><td class="best">64.0</td></tr>
-          <tr><td>PnP Novel — Plate</td><td>57.6</td><td>58.5</td><td>44.0</td><td class="best">61.0</td><td>45.0</td><td>42.0</td><td>56.8</td></tr>
-          <tr class="ours">
-            <td><b>Overall Average</b></td><td>47.6</td><td>47.8</td><td>43.9</td><td>48.8</td><td>39.0</td><td>44.7</td><td>55.3</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
 
 <!-- ============ REAL WORLD ============ -->
 <section id="realworld">
