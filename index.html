@@ -148,6 +148,15 @@
   figure img, figure video { width: 100%; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
   figcaption { font-size: 14.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; }
   figcaption b { color: var(--ink); }
+  .fig-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .fig-row { grid-template-columns: 1fr; gap: 30px; }
+  }
 
   .ph {
     width: 100%; border: 2px dashed #c7cdd5; border-radius: var(--radius);
@@ -289,8 +298,7 @@
       <img src="static/images/Fig2.png" alt="DialogVLA overall architecture">
     </figure>
     <figcaption style="text-align:center">
-      <b>DialogVLA</b> generates structured dialog reasoning to decompose bimanual tasks into per-arm subtasks,
-      routes through a Parallel MoE to select Skill and Arm experts, and produces coordinated bimanual actions via Flow Matching.
+      <b>DialogVLA Overall</b> We present DialogVLA, a dialog reasoning-based vision-language-action model for bimanual robot coordination. The model generates structured dialog reasoning to decompose tasks into per-arm subtasks, routes through Parallel MoE to select skill and arm experts, and produces coordinated bimanual actions via Flow Matching. DialogVLA achieves state-of-the-art performance across RoboTwin simulation, RoboCasa simulation, and real-world bimanual manipulation tasks
     </figcaption>
   </div>
 </section>
@@ -351,18 +359,9 @@
     <span class="section-eyebrow">Method</span>
     <h2 class="section-title">How DialogVLA works</h2>
 
-    <figure style="margin-bottom:34px">
-      <div class="ph">Fig. 1 — Reasoning-to-action paradigms<br><span style="margin-top:8px;display:inline-block"><code>static/images/paradigms.png</code></span></div>
-      <figcaption>
-        <b>Reasoning-to-action paradigms.</b> (a) Standard VLA implicitly maps observation and instruction to a single
-        action space. (b) Hierarchical VLA (e.g., Hi Robot) links two separate models via a discrete language subtask.
-        (c) <b>DialogVLA (ours)</b> keeps a single model and couples reasoning to action through continuous MoE
-        conditioning, preserving explicit Skill/Arm decomposition.
-      </figcaption>
-    </figure>
-
-    <figure style="margin-bottom:34px">
-      <div class="ph">Fig. 3 — DialogVLA architecture<br><span style="margin-top:8px;display:inline-block"><code>static/images/architecture.png</code></span></div>
+    <!-- Fig 3: Architecture (full width, top) -->
+    <figure style="margin-bottom:38px">
+      <img src="static/images/Fig3.png" alt="DialogVLA architecture">
       <figcaption>
         <b>Architecture.</b> Multi-view images (head, left/right wrist) and a language instruction are encoded by the VLM.
         The <b>Dialog Mixture-of-Experts</b> module produces dialog reasoning tokens \(h_{\text{Dialog}}\) and MoE
@@ -372,14 +371,28 @@
       </figcaption>
     </figure>
 
-    <figure>
-      <div class="ph">Fig. 4 — Two-stage training pipeline<br><span style="margin-top:8px;display:inline-block"><code>static/images/two_stage.png</code></span></div>
-      <figcaption>
-        <b>Two-Stage training.</b> Stage 1 trains the Dialog MoE (Skill/Arm routers and LM Head) for dialog reasoning and
-        MoE conditioning, with the Conditioning Projector and Action Expert frozen. Stage 2 freezes the VLM and Dialog MoE,
-        training only the Conditioning Projector and Action Expert to produce bimanual actions from the learned routing signals.
-      </figcaption>
-    </figure>
+    <!-- Two-column row: DialogMoE (Fig6) + Two-Stage training (Fig4) -->
+    <div class="fig-row">
+      <figure>
+        <img src="static/images/Fig6.png" alt="Dialog Mixture-of-Experts routing">
+        <figcaption>
+          <b>Dialog Mixture-of-Experts.</b> At each timestep, Dialog Reasoning emits a structured JSON that decomposes
+          the task into a subtask with per-arm think/act traces, a global plan, and a coordination note. The resulting
+          hidden state is fed to two parallel routers: the <b>Arm Router</b> activates a single expert (\(K{=}1\)) among
+          Left, Bimanual, and Right, while the <b>Skill Router</b> activates the top-two experts (\(K{=}2\)) among a shared
+          expert and skill-specific experts such as Lift, Grasp, and Place. The 3-dim arm and 7-dim skill probabilities are
+          concatenated into a 10-dim MoE conditioning vector, which the Conditioning Projector expands to 1024 dimensions.
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="static/images/Fig4.png" alt="Two-stage training pipeline">
+        <figcaption>
+          <b>Two-Stage training.</b> Stage 1 trains the Dialog MoE (Skill/Arm routers and LM Head) for dialog reasoning and
+          MoE conditioning, with the Conditioning Projector and Action Expert frozen. Stage 2 freezes the VLM and Dialog MoE,
+          training only the Conditioning Projector and Action Expert to produce bimanual actions from the learned routing signals.
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
