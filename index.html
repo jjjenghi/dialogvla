@@ -227,6 +227,16 @@
   .twin-pair video { width: 100%; display: block; border-radius: 9px; border: 1px solid var(--line); background: #000; aspect-ratio: 4/3; object-fit: cover; }
   @media (max-width: 720px) { .twin-showcase { grid-template-columns: 1fr; gap: 8px; } }
 
+  /* Real-world video grid */
+  .rw-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 18px; max-width: 960px; margin: 0 auto 40px; }
+  .rw-task .rw-title { font-size: 14.5px; font-weight: 600; text-align: center; margin: 0 0 7px; color: var(--ink); }
+  .rw-vidbox { position: relative; }
+  .rw-vidbox video { width: 100%; display: block; border-radius: 10px; border: 1px solid var(--line); background: #000; aspect-ratio: 4/3; object-fit: cover; }
+  .rw-badge { position: absolute; right: 8px; bottom: 8px; background: rgba(0,0,0,.62); color: #fff; font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 7px; letter-spacing: .02em; }
+  .rw-instr { font-size: 13px; color: var(--ink-soft); font-style: italic; text-align: center; margin: 8px 4px 0; line-height: 1.45; }
+  @media (max-width: 860px) { .rw-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .rw-grid { grid-template-columns: 1fr; } }
+
   /* ---------- REAL WORLD TASK GRID ---------- */
   .task-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
@@ -669,24 +679,91 @@
   <div class="wrap">
     <span class="section-eyebrow">Real Robot</span>
     <h2 class="section-title">Real-world bimanual tasks</h2>
-    <div class="lead" style="margin-bottom:26px">
+    <div class="lead" style="margin-bottom:30px">
       <p style="text-align:center">
         Evaluated on the <b>SO-ARM 101</b> platform (head + left/right wrist cameras) across 8 bimanual collaborative tasks.
         DialogVLA reaches <b>75.4%</b> average success, outperforming ACT, Diffusion Policy, SmolVLA, &pi;<sub>0</sub>, and GR00T-1.5N on every task.
       </p>
     </div>
 
-    <div class="task-grid">
-      <div class="task"><div class="ph">clip</div><div class="label">Handover Banana</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Uncap Pen</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Pour Water</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Wipe Table</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Move Together</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Sort Object</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Plate Object</div></div>
-      <div class="task"><div class="ph">clip</div><div class="label">Erase Whiteboard</div></div>
+    <div class="rw-grid">
+
+      <div class="rw-task">
+        <p class="rw-title">Handover banana</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/handover.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“handover the banana”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Uncap pen</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/uncap pen.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“Remove the pen cap”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Pour water</p>
+        <div class="rw-vidbox">
+          <video class="speed2" autoplay muted loop playsinline><source src="static/videos/realworld/pour water.mp4" type="video/mp4"></video>
+          <span class="rw-badge">×2</span>
+        </div>
+        <p class="rw-instr">“Pour water into the cup”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Wipe table</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/wipe table.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“Wipe the surface, lifting the obstacle if necessary”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Erase whiteboard</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/whiteboard.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“Erase the text on the whiteboard”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Sort object</p>
+        <div class="rw-vidbox">
+          <video class="speed2" autoplay muted loop playsinline><source src="static/videos/realworld/sort object.mp4" type="video/mp4"></video>
+          <span class="rw-badge">×2</span>
+        </div>
+        <p class="rw-instr">“sort items by color”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Plate object</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/plate object.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“Place a hamburger and hotdog neatly on a tray for serving”</p>
+      </div>
+
+      <div class="rw-task">
+        <p class="rw-title">Move together</p>
+        <div class="rw-vidbox">
+          <video autoplay muted loop playsinline><source src="static/videos/realworld/move together.mp4" type="video/mp4"></video>
+        </div>
+        <p class="rw-instr">“Perform a coordinated transport of the heavy object”</p>
+      </div>
+
     </div>
-    <p class="tbl-note">Drop your task videos in <code style="font-family:'JetBrains Mono',monospace;font-size:12px">static/videos/</code> and swap each placeholder for a looping <code style="font-family:'JetBrains Mono',monospace;font-size:12px">&lt;video&gt;</code>.</p>
+
+    <!-- Overall results graph -->
+    <figure>
+      <img src="static/images/Fig5.png" alt="Real-world success rate comparison across 8 tasks">
+      <figcaption style="text-align:center">
+        <b>Real-world results.</b> Success rate across the 8 real-world bimanual tasks. DialogVLA consistently outperforms
+        ACT, Diffusion Policy, SmolVLA, &pi;<sub>0</sub>, and GR00T-1.5N.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
@@ -746,6 +823,12 @@
       setTimeout(() => b.innerText = old, 1500);
     });
   }
+
+  // 2x playback for tagged videos (Pour water, Sort object)
+  document.querySelectorAll('video.speed2').forEach(function (v) {
+    v.playbackRate = 2.0;
+    v.addEventListener('loadedmetadata', function () { v.playbackRate = 2.0; });
+  });
 </script>
 </body>
 </html>
