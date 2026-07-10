@@ -100,6 +100,17 @@
     letter-spacing: 0.01em;
   }
 
+  /* Hero title with logo */
+  .title-row { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .title-row img { height: 62px; width: auto; }
+  .title-main { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: clamp(38px, 6vw, 60px); color: var(--accent); font-style: italic; line-height: 1; margin: 0; }
+  .subtitle-line { font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(19px, 2.8vw, 27px); color: var(--ink); line-height: 1.25; margin: 0 auto 22px; max-width: 780px; }
+
+  /* Org logos between venue and authors */
+  .org-logos { display: flex; align-items: center; justify-content: center; gap: 34px; flex-wrap: wrap; margin: 20px auto 26px; }
+  .org-logos img { height: 60px; width: auto; }
+  @media (max-width: 640px) { .title-row img { height: 44px; } .org-logos img { height: 44px; } }
+
   .authors { font-size: 18px; margin: 0 auto 6px; max-width: 720px; }
   .authors a { color: var(--ink); font-weight: 600; }
   .authors sup { color: var(--accent); font-weight: 700; }
@@ -285,9 +296,18 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <h1 class="title"><span class="brand">DialogVLA</span>: Bridging Reasoning Action in Bimanual Manipulation via Parallel Mixture-of-Experts</h1>
+    <div class="title-row">
+      <img src="static/images/dialogvla_logo.webp" alt="DialogVLA logo">
+      <h1 class="title-main">DialogVLA</h1>
+    </div>
+    <p class="subtitle-line">Bridging Reasoning Action in Bimanual Manipulation via Parallel Mixture-of-Experts</p>
 
     <p class="venue-big">IROS 2026</p>
+
+    <div class="org-logos">
+      <img src="static/images/university.png" alt="Kyung Hee University">
+      <img src="static/images/lab_logo.webp" alt="Human-Robot Interaction Laboratory">
+    </div>
 
     <p class="authors">
       <a href="#">Jeonghwan Choi</a><sup>1</sup>,
@@ -304,10 +324,6 @@
       <a class="btn disabled" href="#" aria-disabled="true">
         <svg viewBox="0 0 384 512"><path d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"/></svg>
         Paper <span class="soon">SOON</span>
-      </a>
-      <a class="btn disabled" href="#" aria-disabled="true">
-        <svg viewBox="0 0 448 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.6 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2z"/></svg>
-        arXiv <span class="soon">SOON</span>
       </a>
       <a class="btn disabled" href="#" aria-disabled="true">
         <svg viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg>
@@ -797,10 +813,8 @@
     <h2 class="section-title">BibTeX</h2>
     <div class="copy-row"><button class="copy-btn" onclick="copyBib()">Copy</button></div>
 <pre class="bibtex" id="bib">@article{choi2026dialogvla,
-  title   = {DialogVLA: Bridging Reasoning Action in Bimanual
-             Manipulation via Parallel Mixture-of-Experts},
-  author  = {Choi, Jeonghwan and Kim, Hyunwoo and Jin, Ilsung
-             and Kim, Donghan},
+  title   = {DialogVLA: Bridging Reasoning Action in Bimanual Manipulation via Parallel Mixture-of-Experts},
+  author  = {Choi Jeonghwan and Kim Hyunwoo and Jin Ilsung and Kim Donghan},
   journal = {arXiv preprint arXiv:XXXX.XXXXX},
   year    = {2026}
 }</pre>
