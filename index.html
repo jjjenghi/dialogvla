@@ -363,7 +363,7 @@
     <figure style="margin-bottom:38px">
       <img src="static/images/Fig3.png" alt="DialogVLA architecture">
       <figcaption>
-        <b>Architecture.</b> Multi-view images (head, left/right wrist) and a language instruction are encoded by the VLM.
+        <b>DialogVLA Architecture.</b> Multi-view images (head, left/right wrist) and a language instruction are encoded by the VLM.
         The <b>Dialog Mixture-of-Experts</b> module produces dialog reasoning tokens \(h_{\text{Dialog}}\) and MoE
         conditioning vectors \(h_{\text{MoE}}\) through \(N\) transformer blocks with parallel Skill and Arm routers.
         The <b>Action Expert</b> takes the conditioning vector \(h_{\text{cond}}\), proprioceptive state \(\mathbf{p}\),
@@ -387,12 +387,30 @@
       <figure>
         <img src="static/images/Fig4.png" alt="Two-stage training pipeline">
         <figcaption>
-          <b>Two-Stage training.</b> Stage 1 trains the Dialog MoE (Skill/Arm routers and LM Head) for dialog reasoning and
+          <b>Two-Stage training pipline of DialogVLA.</b> Stage 1 trains the Dialog MoE (Skill/Arm routers and LM Head) for dialog reasoning and
           MoE conditioning, with the Conditioning Projector and Action Expert frozen. Stage 2 freezes the VLM and Dialog MoE,
           training only the Conditioning Projector and Action Expert to produce bimanual actions from the learned routing signals.
         </figcaption>
       </figure>
     </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIMENTAL SETUP ============ -->
+<section id="setup">
+  <div class="wrap">
+    <span class="section-eyebrow">Experiments</span>
+    <h2 class="section-title">Experimental setup</h2>
+    <figure>
+      <img src="static/images/Fig7.png" alt="Experimental setup across simulation and real-world tasks">
+      <figcaption style="text-align:center">
+        <b>Evaluation across simulation and real hardware.</b> DialogVLA is evaluated on two simulation benchmarks —
+        <b>RoboCasa GR-1 Tabletop</b> (24 PnP tasks) and <b>RoboTwin 2.0</b> (12 bimanual tasks) — and on the real
+        <b>SO-ARM 101</b> platform with three cameras (head, left, right). Real-world evaluation covers 8 bimanual
+        collaborative tasks: Handover Banana, Uncap Pen, Pour Water, Wipe Table, Move Together, Sort Object, Plate Object,
+        and Erase Whiteboard.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
