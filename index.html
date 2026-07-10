@@ -218,6 +218,15 @@
   .vid-pair video { width: 100%; display: block; border-radius: 10px; border: 1px solid var(--line); background: #000; aspect-ratio: 4/3; object-fit: cover; }
   @media (max-width: 720px) { .vid-showcase { grid-template-columns: 1fr; gap: 24px; } }
 
+  /* RoboTwin Easy/Hard showcase */
+  .twin-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; max-width: 940px; margin: 0 auto; }
+  .twin-col-head { text-align: center; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-weight: 600; color: var(--accent); margin: 0 0 6px; }
+  .twin-task { margin-bottom: 22px; }
+  .twin-task .twin-task-title { font-size: 14.5px; font-weight: 600; margin: 0 0 7px; text-align: center; color: var(--ink); }
+  .twin-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  .twin-pair video { width: 100%; display: block; border-radius: 9px; border: 1px solid var(--line); background: #000; aspect-ratio: 4/3; object-fit: cover; }
+  @media (max-width: 720px) { .twin-showcase { grid-template-columns: 1fr; gap: 8px; } }
+
   /* ---------- REAL WORLD TASK GRID ---------- */
   .task-grid {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
@@ -522,6 +531,91 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROBOTWIN VIDEOS ============ -->
+<section id="robotwin-videos">
+  <div class="wrap">
+    <span class="section-eyebrow">Rollouts</span>
+    <h2 class="section-title">RoboTwin 2.0</h2>
+    <div class="twin-showcase">
+
+      <!-- ===== EASY column ===== -->
+      <div>
+        <p class="twin-col-head">Easy Scenario</p>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Dump bin bigbin</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/bigdin_1_easy.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/bigdin_2_easy.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Handover block</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/handover_1_easy.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/handover_2_easy.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Grab roller</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/roller_1_easy.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/roller_2_easy.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Pick dual bottles</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/dual_bottle_1_easy.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/dual_bottle_2_easy.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== HARD column ===== -->
+      <div>
+        <p class="twin-col-head">Hard Scenario</p>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Dump bin bigbin</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/bigdin_1_hard.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/bigdin_2_hard.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Handover block</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/handover_1_hard.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/handover_2_hard.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Grab roller</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/roller_1_hard.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/roller_2_hard.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+
+        <div class="twin-task">
+          <p class="twin-task-title">Pick dual bottles</p>
+          <div class="twin-pair">
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/dual_bottle_1_hard.mp4" type="video/mp4"></video>
+            <video autoplay muted loop playsinline><source src="static/videos/robotwin/dual_bottle_2_hard.mp4" type="video/mp4"></video>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
