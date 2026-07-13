@@ -300,12 +300,111 @@
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; scroll-behavior: auto; }
   }
+
+  /* ========== STICKY NAV ========== */
+  .navbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 54px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Newsreader', Georgia, serif; font-style: italic;
+    font-weight: 600; font-size: 19px; color: var(--accent);
+  }
+  .nav-brand img { height: 24px; width: auto; }
+  .nav-brand:hover { text-decoration: none; }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink-soft);
+    padding: 4px 0; border-bottom: 2px solid transparent;
+  }
+  .nav-links a:hover { color: var(--accent); border-bottom-color: var(--accent); text-decoration: none; }
+  @media (max-width: 720px) { .nav-links { display: none; } .nav-inner { justify-content: center; } }
+
+  /* ========== HEADLINE STAT STRIP ========== */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; max-width: 900px; margin: 0 auto;
+  }
+  .stat { background: var(--bg); padding: 22px 18px; text-align: center; }
+  .stat .num {
+    font-family: 'Newsreader', Georgia, serif; font-weight: 600;
+    font-size: clamp(26px, 3.4vw, 36px); color: var(--accent);
+    line-height: 1; margin-bottom: 7px;
+  }
+  .stat .lab { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .stat .sub { font-size: 12.5px; color: var(--ink-soft); }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ========== PARADIGM COMPARISON CARDS ========== */
+  .para-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
+  .para {
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px 20px; background: var(--bg-soft);
+  }
+  .para.is-ours { border-color: var(--accent); background: var(--accent-soft); }
+  .para .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 500;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft);
+    display: block; margin-bottom: 8px;
+  }
+  .para.is-ours .tag { color: var(--accent); }
+  .para h3 {
+    font-family: 'Newsreader', Georgia, serif; font-weight: 600;
+    font-size: 19px; margin: 0 0 12px; line-height: 1.25;
+  }
+  .para ul { margin: 0; padding-left: 17px; }
+  .para li { font-size: 14px; color: var(--ink-soft); margin-bottom: 7px; line-height: 1.5; }
+  .para.is-ours li { color: var(--ink); }
+  @media (max-width: 760px) { .para-grid { grid-template-columns: 1fr; } }
+
+  /* ========== METHOD STEP CARDS ========== */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 900px; margin: 34px auto 0; }
+  .step { border-top: 3px solid var(--accent); padding-top: 16px; }
+  .step .n {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+    color: var(--accent); display: block; margin-bottom: 6px;
+  }
+  .step h3 { font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 18px; margin: 0 0 8px; }
+  .step p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 24px; } }
+
+  /* ========== SCROLL REVEAL ========== */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 </style>
 </head>
 <body>
 
+<!-- ============ NAV ============ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">
+      <img src="static/images/dialogvla_logo.webp" alt="">
+      DialogVLA
+    </a>
+    <div class="nav-links">
+      <a href="#abstract">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#robotwin">Results</a>
+      <a href="#realworld">Real World</a>
+      <a href="#robocasa-videos">Rollouts</a>
+      <a href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
 <!-- ============ HERO ============ -->
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <div class="title-row">
       <img src="static/images/dialogvla_logo.webp" alt="DialogVLA logo">
@@ -348,6 +447,29 @@
     <figcaption style="text-align:center">
       <b>DialogVLA Overall</b> We present DialogVLA, a dialog reasoning-based vision-language-action model for bimanual robot coordination. The model generates structured dialog reasoning to decompose tasks into per-arm subtasks, routes through Parallel MoE to select skill and arm experts, and produces coordinated bimanual actions via Flow Matching. DialogVLA achieves state-of-the-art performance across RoboTwin simulation, RoboCasa simulation, and real-world bimanual manipulation tasks
     </figcaption>
+
+    <div class="stats reveal" style="margin-top:38px">
+      <div class="stat">
+        <div class="num">82.8%</div>
+        <div class="lab">RoboTwin Easy</div>
+        <div class="sub">+32.3%p over &pi;<sub>0</sub></div>
+      </div>
+      <div class="stat">
+        <div class="num">63.9%</div>
+        <div class="lab">RoboTwin Hard</div>
+        <div class="sub">+46.7%p over &pi;<sub>0</sub></div>
+      </div>
+      <div class="stat">
+        <div class="num">75.4%</div>
+        <div class="lab">Real-world success</div>
+        <div class="sub">8 bimanual tasks</div>
+      </div>
+      <div class="stat">
+        <div class="num">7 &times; 3</div>
+        <div class="lab">Parallel experts</div>
+        <div class="sub">Skill phases &times; arm roles</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -384,7 +506,7 @@
   <div class="wrap">
     <span class="section-eyebrow">Contributions</span>
     <h2 class="section-title">What's new</h2>
-    <div class="contribs">
+    <div class="contribs reveal">
       <div class="contrib">
         <div class="num">1</div>
         <p>A <b>structural VLA framework</b> that explicitly decomposes <b>Skill Phase</b> and <b>Arm Role</b> for bimanual manipulation.</p>
@@ -396,6 +518,49 @@
       <div class="contrib">
         <div class="num">3</div>
         <p>A <b>Two-Stage Training</b> strategy that separates reasoning/routing learning from action-generation learning, validated in both simulation and real-robot environments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARADIGMS ============ -->
+<section id="paradigms">
+  <div class="wrap">
+    <span class="section-eyebrow">Positioning</span>
+    <h2 class="section-title">Why not just another VLA?</h2>
+    <div class="lead" style="margin-bottom:30px">
+      <p style="text-align:center">
+        Three ways to get from reasoning to action. The first hides the decision; the second exposes it but breaks the
+        gradient. DialogVLA keeps one model and carries the decision forward as a continuous signal.
+      </p>
+    </div>
+    <div class="para-grid reveal">
+      <div class="para">
+        <span class="tag">(a) Standard VLA</span>
+        <h3>One implicit action space</h3>
+        <ul>
+          <li>Maps observation and instruction straight to actions</li>
+          <li>Skill phase and arm role are never named</li>
+          <li>Errors accumulate over long-horizon bimanual tasks</li>
+        </ul>
+      </div>
+      <div class="para">
+        <span class="tag">(b) Hierarchical VLA</span>
+        <h3>Two models, one text bottleneck</h3>
+        <ul>
+          <li>A planner emits a discrete language subtask</li>
+          <li>A separate low-level policy consumes that string</li>
+          <li>Everything not expressible in words is lost at the seam</li>
+        </ul>
+      </div>
+      <div class="para is-ours">
+        <span class="tag">(c) DialogVLA (ours)</span>
+        <h3>One model, continuous coupling</h3>
+        <ul>
+          <li>Skill Phase and Arm Role stay explicit and separable</li>
+          <li>Routing probabilities condition action generation directly</li>
+          <li>No discretization step between deciding and acting</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -419,8 +584,30 @@
       </figcaption>
     </figure>
 
+    <div class="steps reveal" style="margin-bottom:44px">
+      <div class="step">
+        <span class="n">Step 1</span>
+        <h3>Dialog Reasoning</h3>
+        <p>From the head-view image and the instruction, the VLM autoregressively emits a structured dialog that
+        names the current Skill Phase and assigns a role to each arm — making the decision explicit instead of
+        burying it in the action vector.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step 2</span>
+        <h3>Parallel MoE routing</h3>
+        <p>Every FFN in the backbone becomes two expert groups. A Skill Router picks the top-2 of 7 phase experts;
+        an Arm Router picks 1 of 3 role experts. Their probabilities form a 10-dim conditioning vector.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step 3</span>
+        <h3>Conditioned action</h3>
+        <p>The projected routing vector modulates the Flow Matching Action Expert through AdaRMS, so the velocity
+        field it generates matches the current phase and arm role — even under identical visual input.</p>
+      </div>
+    </div>
+
     <!-- Two-column row: DialogMoE (Fig6) + Two-Stage training (Fig4) -->
-    <div class="fig-row">
+    <div class="fig-row reveal">
       <figure>
         <img src="static/images/Fig6.png" alt="Dialog Mixture-of-Experts routing">
         <figcaption>
@@ -542,7 +729,7 @@
   <div class="wrap">
     <span class="section-eyebrow">Results</span>
     <h2 class="section-title">RoboCasa GR1 Tabletop</h2>
-    <div class="table-scroll">
+    <div class="table-scroll reveal">
       <table class="res">
         <caption><b>Table.</b> RoboCasa GR1 Tabletop (verb-grouped averages, success rate %), 50 rollouts per task on 24 PnP tasks.</caption>
         <thead>
@@ -657,7 +844,7 @@
   <div class="wrap">
     <span class="section-eyebrow">Results</span>
     <h2 class="section-title">RoboTwin 2.0 benchmark</h2>
-    <div class="table-scroll">
+    <div class="table-scroll reveal">
       <table class="res">
         <caption><b>Table.</b> RoboTwin 2.0 results on 12 bimanual tasks (success rate %). DialogVLA achieves the highest performance on all 12 tasks.</caption>
         <thead>
@@ -794,7 +981,7 @@
   <div class="wrap">
     <span class="section-eyebrow">Analysis</span>
     <h2 class="section-title">Ablation study</h2>
-    <div class="table-scroll">
+    <div class="table-scroll reveal">
       <table class="res">
         <caption><b>Table.</b> Ablation on real-world Handover and Move tasks (success rate %, 20 trials per task). Each component contributes complementarily.</caption>
         <thead>
@@ -835,6 +1022,21 @@
 </footer>
 
 <script>
+  // Reveal elements as they scroll into view
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
   function copyBib() {
     const t = document.getElementById('bib').innerText;
     navigator.clipboard.writeText(t).then(() => {
