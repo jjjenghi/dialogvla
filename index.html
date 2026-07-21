@@ -135,19 +135,24 @@
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 15px; font-weight: 600;
     padding: 11px 20px; border-radius: 999px;
-    background: var(--ink); color: #fff;
-    border: 1px solid var(--ink);
-    transition: transform .12s ease, background .12s ease;
+    background: var(--accent); color: #fff;
+    border: 1px solid var(--accent);
+    box-shadow: 0 2px 10px rgba(47,95,214,.22);
+    transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
   }
-  .btn:hover { text-decoration: none; transform: translateY(-1px); background: #000; }
+  .btn:hover {
+    text-decoration: none; transform: translateY(-1px);
+    background: #2450b8; border-color: #2450b8;
+    box-shadow: 0 4px 16px rgba(47,95,214,.3);
+  }
   .btn svg { width: 17px; height: 17px; fill: currentColor; }
   .btn.disabled {
-    background: #f0f1f3; color: #9aa1aa; border-color: var(--line);
-    cursor: not-allowed; pointer-events: none;
+    background: var(--accent-soft); color: #8fa3c8; border-color: #d3e0fb;
+    cursor: not-allowed; pointer-events: none; box-shadow: none;
   }
   .btn.disabled .soon {
     font-size: 11px; font-weight: 700; letter-spacing: .03em;
-    background: #e2e5e9; color: #737b85; padding: 2px 7px; border-radius: 6px;
+    background: #dde7fa; color: #7b8db0; padding: 2px 7px; border-radius: 6px;
   }
 
   /* ---------- SECTIONS ---------- */
@@ -426,7 +431,7 @@
     <div class="links">
       <!-- Enable these once arXiv / code are ready by removing the "disabled" class and setting href -->
       <a class="btn" href="static/paper/DialogVLA.pdf" target="_blank" rel="noopener">
-        <svg viewBox="0 0 384 512"><path d="M320 464c8.8..."/></svg>
+        <svg viewBox="0 0 384 512"><path d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z"/></svg>
         Paper
       </a>
       <a class="btn disabled" href="#" aria-disabled="true">
